@@ -1,23 +1,15 @@
 package main
 
 import (
-	"net/http"
-	"os"
-
-	echo "github.com/labstack/echo/v4"
+    "net/http"
 )
 
-var port = os.Getenv("PORT")
-
 func main() {
-	if port == "" {
-		port = "8080"
-	}
+    // Servir los archivos estáticos desde la carpeta "build"
+    fs := http.FileServer(http.Dir("./frontend/build"))
+    http.Handle("/", fs)
 
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-
-	e.Logger.Fatal(e.Start(":" + port))
+    // Iniciar el servidor en el puerto 8080
+    println("Servidor corriendo en http://localhost:8080")
+    http.ListenAndServe(":8080", nil)
 }
