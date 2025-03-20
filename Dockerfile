@@ -5,9 +5,6 @@ WORKDIR /app
 
 COPY . .
 
-# Copiar los archivos del frontend desde la carpeta build
-COPY --from=frontend /app/build ./frontend/build
-
 # Build the Go app
 RUN go build -o COMPRAVENTA_INSO2 ./cmd/CV
 
