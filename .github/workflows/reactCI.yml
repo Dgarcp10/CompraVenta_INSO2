@@ -15,12 +15,18 @@ jobs:
           with:
             node-version: 18
         - name: Install dependencies
-          run: npm install
+          run: |
+            cd frontend
+            npm install
         - name: Build
-          run: npm run build
+          run: |
+            cd frontend 
+            npm run build
         #- name: Lint
         #  run: npm run esLint
         #- name: Test
         #  run: npm test
         - name: run
-          run: npm ci
+          run: |
+            cd frontend 
+            npm ci
