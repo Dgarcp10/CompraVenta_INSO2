@@ -1,4 +1,4 @@
-module github.com/jferrl/copiule
+module github.com/Dgarcp10/CompraVenta_INSO2
 
 go 1.24.0
 
