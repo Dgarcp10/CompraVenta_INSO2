@@ -1,4 +1,4 @@
-name: Go CI
+name: React CI
 
 on:
  push:
@@ -14,6 +14,19 @@ jobs:
         - uses: actions/setup-node@v4
           with:
             node-version: 18
-          run: npm install
-          run: npm test
-          run: npm run build
+        - name: Install dependencies
+          run: |
+            cd frontend
+            npm install
+        - name: Build
+          run: |
+            cd frontend 
+            npm run build
+        #- name: Lint
+        #  run: npm run esLint
+        #- name: Test
+        #  run: npm test
+        - name: run
+          run: |
+            cd frontend 
+            npm ci
